@@ -18,7 +18,7 @@ function get_all_color_pairs_and_print_them() {
   return allColorPairs;
 }
 
-function get_single_color__pair(majorIndex, minorIndex) {
+function get_single_color_pair(majorIndex, minorIndex) {
   return `${majorColors[majorIndex]} | ${minorColors[minorIndex]}`;
 }
 
@@ -28,9 +28,9 @@ function get_single_color_pair_by_pair_number(pairNumber) {
   return get_single_color_pair(majorIndex, minorIndex);
 }
 
-expect(get_single_color__pair(0, 0)).equals("White | Blue");
-expect(get_single_color__pair(1, 2)).equals("Red | Green");
-expect(get_single_color__pair(4, 4)).equals("Violet | Slate");
+expect(get_single_color_pair(0, 0)).equals("White | Blue");
+expect(get_single_color_pair(1, 2)).equals("Red | Green");
+expect(get_single_color_pair(4, 4)).equals("Violet | Slate");
 
 expect(get_single_color_pair_by_pair_number(0)).equals("White | Blue");
 expect(get_single_color_pair_by_pair_number(1)).equals("White | Orange");
