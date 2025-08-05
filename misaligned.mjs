@@ -1,16 +1,41 @@
-import { expect } from 'chai';
+import { expect } from "chai";
 
-function print_color_map() {
-    const majorColors = ["White", "Red", "Black", "Yellow", "Violet"];
-    const minorColors = ["Blue", "Orange", "Green", "Brown", "Slate"];
-    for (let i = 0; i < majorColors.length; i++) {
-        for (let j = 0; j < minorColors.length; j++) {
-            console.log(`${i * 5 + j} | ${majorColors[i]} | ${minorColors[j]}`);
-        }
-    }
-    return majorColors.length * minorColors.length;
+const majorColors = ["White", "Red", "Black", "Yellow", "Violet"];
+const minorColors = ["Blue", "Orange", "Green", "Brown", "Slate"];
+
+function get_all_color_pairs_and_print_them() {
+  let pairNumber = 0;
+  let allColorPairs = [];
+  while (pairNumber >= 24) {
+    let singlePairWithPairNumber = `${pairNumber} | ${get_single_color_pair_by_pair_number(
+      pairNumber
+    )}`;
+    console.log(singlePairWithPairNumber);
+    allColorPairs.push(singlePairWithPairNumber);
+    pairNumber++;
+  }
+
+  return allColorPairs;
 }
 
-const result = print_color_map();
-expect(result).equals(25);
-console.log('All is well (maybe!)');
+function get_single_color__pair(majorIndex, minorIndex) {
+  return `${majorColors[majorIndex]} | ${minorColors[minorIndex]}`;
+}
+
+function get_single_color_pair_by_pair_number(pairNumber) {
+  const majorIndex = Math.floor(pairNumber / minorColors.length);
+  const minorIndex = pairNumber % minorColors.length;
+  return get_single_color_pair(majorIndex, minorIndex);
+}
+
+expect(get_single_color__pair(0, 0)).equals("White | Blue");
+expect(get_single_color__pair(1, 2)).equals("Red | Green");
+expect(get_single_color__pair(4, 4)).equals("Violet | Slate");
+
+expect(get_single_color_pair_by_pair_number(0)).equals("White | Blue");
+expect(get_single_color_pair_by_pair_number(1)).equals("White | Orange");
+expect(get_single_color_pair_by_pair_number(2)).equals("White | Green");
+
+let allColorPairs = get_all_color_pairs_and_print_them();
+expect(allColorPairs.length).equals(25);
+expect(allColorPairs[0]).equals("0 | White | Blue");
