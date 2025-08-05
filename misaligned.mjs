@@ -6,7 +6,7 @@ const minorColors = ["Blue", "Orange", "Green", "Brown", "Slate"];
 function get_all_color_pairs_and_print_them() {
   let pairNumber = 0;
   let allColorPairs = [];
-  while (pairNumber >= 24) {
+  while (pairNumber <= 24) {
     let singlePairWithPairNumber = `${pairNumber} | ${get_single_color_pair_by_pair_number(
       pairNumber
     )}`;
